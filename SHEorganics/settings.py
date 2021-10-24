@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-_)q+!^9y#p50*w&m9$-6!tfrh7vdx$h(hhe=%i6=m(+9_1e868
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sheorganics.herokuapp.com']
 
 
 # Application definition
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'SHEorganics.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8ejjk1b31ppha',
+        'USER': 'rofretmukfmybj',
+        'PASSWORD': '39861de344860531c1bdd3da6e1644702ea4d363481bd6707e665cdea9c12169',
+        'HOST': 'ec2-52-0-234-93.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 db_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
