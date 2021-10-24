@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'SHEorganics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8ejjk1b31ppha',
-        'USER': 'rofretmukfmybj',
-        'PASSWORD': '39861de344860531c1bdd3da6e1644702ea4d363481bd6707e665cdea9c12169',
-        'HOST': 'ec2-52-0-234-93.compute-1.amazonaws.com',
+        'NAME': 'd3u8fnm6b8lejm',
+        'USER': 'lzlzjntzchlgpc',
+        'PASSWORD': '851c6d450e5ac86f4a18de46d57f11187d8bdc880bd062bccc4d97079e45f415',
+        'HOST': 'ec2-23-22-243-103.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
