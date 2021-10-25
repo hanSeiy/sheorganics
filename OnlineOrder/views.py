@@ -15,29 +15,30 @@ def contacts(request):
         message_form = messageform(request.POST)
         if message_form.is_valid():
             message_form.save();
-            message = True
-            messages.info(request, "Thank you....we will stay in contact")
-            return redirect('contacts')
+            return redirect('message_success')
         else:
             messages.info(request, "Enter valid information")
             return redirect('contacts')
     else:
         message_form = messageform()
         message = False
-    return render(request, "contacts.html", {'message_form':message_form, 'message':message})
+    return render(request, "contacts.html", {'message_form':message_form})
 
 def order(request):
     if request.method == 'POST':
         order_form = orderform(request.POST)
         if order_form.is_valid():
             order_form.save();
-            message = True
-            messages.info(request, "Thank you...your order has been received")
-            return redirect('order')
+            return redirect('order_success')
         else:
             messages.info(request, "Enter valid information")
             return redirect('order')
     else:
         order_form = orderform()
-        message = False
-    return render(request, "order.html", {'order_form':order_form, 'message':message})
+    return render(request, "order.html", {'order_form':order_form})
+
+def order_success(request):
+    return render(request, "order_success.html")
+
+def message_success(request):
+    return render(request, "message_success.html")

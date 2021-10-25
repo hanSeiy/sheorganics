@@ -99,6 +99,15 @@ class orderform(forms.ModelForm):
             'data-constraints': '@Numeric @Required',
         }
     ))
+    address = forms.CharField(max_length=200, widget=forms.TextInput(
+        attrs = {
+            'class': 'form-input',
+            'id': 'contact-address', 
+            'type': 'text',
+            'name': 'address',
+            'data-constraints': '@Required',
+        }
+    ))
     products_selection = forms.MultipleChoiceField(choices=products, widget=forms.CheckboxSelectMultiple, required=True)
     class Meta:
         model = OnlineOrders

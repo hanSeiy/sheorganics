@@ -89,11 +89,6 @@
         <div class="container">
           <div class="row row-50">
             <div class="col-lg-12">
-            {% if message %}
-              <h2>Thank you...order has been received</h2>
-              <div class="divider-lg"></div>
-              <p>we will stay in contact, you can place a <a href="order">new order</a> or <a href="/">DONE.</a></p>
-            {% else %}
               <h2>Place An Order</h2>
               <div class="divider-lg"></div>
               <p>You can place an order online and we will attend to your order as soon as possible.</p>
@@ -128,6 +123,12 @@
                      {{order_form.email}}
                     </div>
                   </div>
+                  <div class="col-sm-6">
+                    <div class="form-wrap">
+                      <label class="form-label" for="contact-email">Address/location</label>
+                     {{order_form.address}}
+                    </div>
+                  </div>
                   <div class="col-sm-8">
                     <div class="form-wrap">
                       <label for="items">Select product:</label>
@@ -138,9 +139,7 @@
                 <div class="form-button group-sm text-left">
                   <button class="button button-primary" type="submit">place order</button>
                 </div>
-                
-              </form>
-            {% endif %}  
+              </form> 
             </div>
           </div>
         </div>
