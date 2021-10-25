@@ -102,6 +102,11 @@
         <div class="container">
           <div class="row row-50">
             <div class="col-lg-8">
+            {% if message %}
+              <h2 class="text-center">...Thank you....</h2>
+              <div class="divider-lg"></div>
+              <p>Your message has beem received, we will stay in contact</p>
+            {% else %}
               <h2>Contact us</h2>
               <div class="divider-lg"></div>
               <p>You can contact us any way that is convenient for you.<br class="d-none d-lg-inline">You can also use a quick contact form below to send us a message.</p>
@@ -148,6 +153,8 @@
                 </div>
                 
               </form>
+            {% endif %} 
+
             </div>
             <div class="col-lg-4">
               <ul class="contact-list">
