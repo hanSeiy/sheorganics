@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG", False))
 
-ALLOWED_HOSTS = ['sheorganics.herokuapp.com']
+ALLOWED_HOSTS = ['sheorganics.herokuapp.com', 'www.sheorganics.co.za', 'sheorganics.co.za']
 
 
 # Application definition
