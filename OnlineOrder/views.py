@@ -16,6 +16,7 @@ def contacts(request):
         if message_form.is_valid():
             message_form.save();
             message = True
+            messages.info(request, "Thank you....we will stay in contact")
             return redirect('contacts')
         else:
             messages.info(request, "Enter valid information")
@@ -31,6 +32,7 @@ def order(request):
         if order_form.is_valid():
             order_form.save();
             message = True
+            messages.info(request, "Thank you...your order has been received")
             return redirect('order')
         else:
             messages.info(request, "Enter valid information")
