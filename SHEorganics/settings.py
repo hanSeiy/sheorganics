@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", False))
+DEBUG = False
 
-ALLOWED_HOSTS = ['sheorganics.herokuapp.com', 'www.sheorganics.co.za', 'sheorganics.co.za','local']
+ALLOWED_HOSTS = ['sheorganics.herokuapp.com', 'www.sheorganics.co.za', 'sheorganics.co.za','localhost']
 
 
 # Application definition
@@ -40,19 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'OnlineOrder',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'SHEorganics.urls'
@@ -82,11 +84,11 @@ WSGI_APPLICATION = 'SHEorganics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3u8fnm6b8lejm',
-        'USER': 'lzlzjntzchlgpc',
-        'PASSWORD': '851c6d450e5ac86f4a18de46d57f11187d8bdc880bd062bccc4d97079e45f415',
-        'HOST': 'ec2-23-22-243-103.compute-1.amazonaws.com',
-        'PORT': '5432'
+        'NAME': os.environ["D_NAME"],
+        'USER': os.environ["D_USER"],
+        'PASSWORD': os.environ["D_PASSWORD"],
+        'HOST': os.environ["D_HOST"],
+        'PORT': os.environ["D_PORT"],
     }
 }
 db_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
@@ -128,13 +130,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-if DEBUG:
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -143,10 +141,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SESSION_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True
 
 django_heroku.settings(locals())
