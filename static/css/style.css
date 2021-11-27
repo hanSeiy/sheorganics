@@ -4628,7 +4628,7 @@ textarea.form-input {
 }
 
 html.boxed body {
-	background: #f6f9f9 url(/static/images/bg-2.png) repeat fixed;
+	background: #f6f9f9 url(/static/images/bg-2.jpg) repeat fixed;
 }
 
 @media (min-width: 1630px) {
